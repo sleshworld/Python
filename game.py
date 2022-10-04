@@ -1,7 +1,7 @@
 import random
 
 
-class tank:
+class Tank:
     def __init__(self, model, armor, min_damage, max_damage, health) -> None:
         self.model = model
         self.armor = armor
@@ -30,8 +30,8 @@ class tank:
             )
 
 
-tank1 = tank("T-34", 23, 10, 20, 100)
-tank2 = tank("Tiger", 23, 10, 10, 1)
+tank1 = Tank("T-34", 23, 10, 20, 100)
+tank2 = Tank("Tiger", 23, 10, 10, 1)
 
 tank1.print_info()
 
