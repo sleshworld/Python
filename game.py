@@ -2,25 +2,25 @@ import random
 
 
 class Tank:
-    def __init__(self, model, armor, min_damage, max_damage, health) -> None:
+    def __init__(self, model:str, armor:int, min_damage:int, max_damage:int, health:int):
         self.model = model
         self.armor = armor
         self.damage = random.randint(min_damage, max_damage)
         self.health = health
 
-    def print_info(self) -> None:
+    def print_info(self):
         print(
             f"{self.model} имеет лобовую броню {self.armor} мм. при здоровье {self.health:.2f} ед. здоровья и урон в {self.damage} единиц"
         )
 
-    def health_down(self, enemy) -> None:
+    def health_down(self, enemy):
         self.health -= enemy.damage / self.armor
         if self.health > 0:
             print(
                 f"{self.model}: Командир, по экипажу {self.model} попали, у нас осталось {self.health:.2f} очков здоровья"
             )
 
-    def shot(self, enemy) -> None:
+    def shot(self, enemy):
         enemy.health_down(enemy)
         if enemy.health <= 0:
             print(f"Экипаж танка {enemy.model} уничтожен")
