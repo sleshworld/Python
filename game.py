@@ -1,8 +1,9 @@
 import random
+import unittest
 
 
 class Tank:
-    def __init__(self, model:str, armor:int, min_damage:int, max_damage:int, health:int):
+    def __init__(self, model: str, armor: int, min_damage: int, max_damage: int, health: int):
         self.model = model
         self.armor = armor
         self.damage = random.randint(min_damage, max_damage)
@@ -20,14 +21,13 @@ class Tank:
                 f"{self.model}: Командир, по экипажу {self.model} попали, у нас осталось {self.health:.2f} очков здоровья"
             )
 
-    def shot(self, enemy):
+    def shoot(self, enemy):
         enemy.health_down(enemy)
         if enemy.health <= 0:
-            print(f"Экипаж танка {enemy.model} уничтожен")
+            return f"Экипаж танка {enemy.model} уничтожен"
         else:
-            print(
-                f"{self.model}: Точно в цель, у противника {enemy.model} осталось {enemy.health:.2f} единиц здоровья"
-            )
+            return f"{self.model}: Точно в цель, у противника {enemy.model} осталось {enemy.health:.2f} единиц здоровья"
+
 
 
 tank1 = Tank("T-34", 23, 10, 20, 100)
@@ -35,4 +35,4 @@ tank2 = Tank("Tiger", 23, 10, 10, 1)
 
 tank1.print_info()
 
-tank1.shot(tank2)
+tank1.shoot(tank2)
